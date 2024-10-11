@@ -1,0 +1,77 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f0f3f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    margin: 20px 0;
+}
+
+.profile-info p {
+    margin: 12px 0;
+    line-height: 1.7;
+    font-size: 16px;
+    color: #34495e;
+}
+
+.profile-info p strong {
+    color: #2c3e50;
+}
+
+.btn-edit, .btn-person, .btn-logout {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    border: none; /* ป้องกันขอบปุ่มที่ไม่ต้องการ */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อชี้ไปที่ปุ่ม */
+}
+
+.btn-edit {
+    background: #3498db;
+}
+
+.btn-edit:hover {
+    background: #2980b9;
+}
+.btn-logout {
+    background: #2ecc71;
+}
+
+.btn-logout:hover {
+    background: #27ae60;
+}
+
+/* ปรับปรุงสไตล์ปุ่มที่ไปเลือกบุคคล */
+.btn-person {
+    background: #f39c12; /* เปลี่ยนสีพื้นหลัง */
+}
+
+.btn-person:hover {
+    background: #e67e22; /* สีพื้นหลังเมื่อชี้ */
+}
