@@ -29,7 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // เพิ่มข้อมูลผู้ใช้ใหม่ลงฐานข้อมูล
+    // ตรวจสอบว่า username, email หรือ id_card_number มีอยู่ในระบบหรือไม่
+    $check_sql = "SELECT * FROM users WHERE username = ? OR email = ? OR id_card_number = ?";
+    $stmt_check = $conn->prepare($check_sql);
+    $stmt_check->bind_param("sss", $username, $email, $id_card_number);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    if ($result_check->num_rows > 0) {
+        // หากพบข้อมูลผู้ใช้
+        $_SESSION['error'] = "ชื่อผู้ใช้, อีเมลล์, หรือเลขบัตรประชาชนนี้มีอยู่แล้วในระบบ";
+        header("Location: register.php");
+        exit();
+    }
+
+    // หากไม่มีข้อมูลซ้ำ เพิ่มข้อมูลผู้ใช้ใหม่ลงฐานข้อมูล
     $sql = "INSERT INTO users (id_card_number, full_name, gender, age, address, province, postal_code, phone, email, username, password) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -46,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $stmt->close();
+    $stmt_check->close();
     $conn->close();
 }
 ?>
