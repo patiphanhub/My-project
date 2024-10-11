@@ -10,7 +10,7 @@
     <div class="container">
         <div class="icon-wrapper">
             <a href="system/login.php" class="icon-box">
-                <img src="image/Employer.png" alt="นายจ้าง">
+                <img src="images/Employer.png" alt="นายจ้าง">
                 <p>นายจ้าง</p>
             </a>
         </div>
